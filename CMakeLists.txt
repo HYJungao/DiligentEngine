@@ -2,6 +2,13 @@ cmake_minimum_required (VERSION 3.10)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+if(POLICY CMP0091)
+    cmake_policy(SET CMP0091 NEW)
+endif()
+set(CMAKE_POLICY_DEFAULT_CMP0091 NEW)
+
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "MSVC runtime library" FORCE)
+
 # Generate XCode schema files
 set(CMAKE_XCODE_GENERATE_SCHEME TRUE)
 # Make malloc write 0xAA to newly allocated memory and 0x55 to deallocated memory
